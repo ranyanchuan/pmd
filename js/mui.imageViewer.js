@@ -1,8 +1,6 @@
 /**
  * 图片预览组件
  * varstion 0.4.0
- * by Houfeng
- * Houfeng@DCloud.io
  */
 
 (function($, document) {

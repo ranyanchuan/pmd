@@ -1,9 +1,5 @@
 /*!
- * ======================================================
- * FeedBack Template For MUI (http://dev.dcloud.net.cn/mui)
- * =======================================================
  * @version:1.0.0
- * @author:cuihongbao@dcloud.io
  */
 (function() {
 	var index = 1;
@@ -11,19 +7,19 @@
 	var imageIndexIdNum = 0;
 	var starIndex = 0;
 	var feedback = {
-		question: document.getElementById('question'), 
-		contact: document.getElementById('contact'), 
+		question: document.getElementById('question'),
+		contact: document.getElementById('contact'),
 		imageList: document.getElementById('image-list'),
 		submitBtn: document.getElementById('submit')
 	};
 	var url = 'https://service.dcloud.net.cn/feedback';
 	feedback.files = [];
-	feedback.uploader = null;  
-	feedback.deviceInfo = null; 
+	feedback.uploader = null;
+	feedback.deviceInfo = null;
 	mui.plusReady(function() {
 		//设备信息，无需修改
 		feedback.deviceInfo = {
-			appid: plus.runtime.appid, 
+			appid: plus.runtime.appid,
 			imei: plus.device.imei, //设备标识
 			images: feedback.files, //图片文件
 			p: mui.os.android ? 'a' : 'i', //平台类型，i表示iOS平台，a表示Android平台。
@@ -35,7 +31,7 @@
 		}
 	});
 	/**
-	 *提交成功之后，恢复表单项 
+	 *提交成功之后，恢复表单项
 	 */
 	feedback.clearForm = function() {
 		feedback.question.value = '';
@@ -94,7 +90,7 @@
 			}, 0);
 			return false;
 		}, false);
-		
+
 		//
 		var fileInput = document.createElement('div');
 		fileInput.setAttribute('class', 'file');
@@ -102,19 +98,19 @@
 		fileInput.addEventListener('tap', function(event) {
 			var self = this;
 			var index = (this.id).substr(-1);
-			
+
 			plus.gallery.pick(function(e) {
 //				console.log("event:"+e);
 				var name = e.substr(e.lastIndexOf('/') + 1);
 				console.log("name:"+name);
-					
+
 				plus.zip.compressImage({
 					src: e,
 					dst: '_doc/' + name,
 					overwrite: true,
 					quality: 50
 				}, function(zip) {
-					size += zip.size  
+					size += zip.size
 					console.log("filesize:"+zip.size+",totalsize:"+size);
 					if (size > (10*1024*1024)) {
 						return mui.toast('文件超大,请重新选择~');
@@ -131,9 +127,9 @@
 				}, function(zipe) {
 					mui.toast('压缩失败！')
 				});
-				
 
-				
+
+
 			}, function(e) {
 				mui.toast(e.message);
 			},{});
@@ -162,7 +158,7 @@
 			contact: feedback.contact.value,
 			images: feedback.files,
 			score:''+starIndex
-		})) 
+		}))
 	}, false)
 	feedback.send = function(content) {
 		feedback.uploader = plus.uploader.createUpload(url, {
@@ -181,7 +177,7 @@
 			}else{
 				console.log("upload fail");
 			}
-			
+
 		});
 		//添加上传数据
 		mui.each(content, function(index, element) {
@@ -189,7 +185,7 @@
 				console.log("addData:"+index+","+element);
 //				console.log(index);
 				feedback.uploader.addData(index, element)
-			} 
+			}
 		});
 		//添加上传文件
 		mui.each(feedback.files, function(index, element) {
@@ -207,7 +203,7 @@
 		});
 //		plus.nativeUI.showWaiting();
 	};
-	
+
 	 //应用评分
 	 mui('.icons').on('tap','i',function(){
 	  	var index = parseInt(this.getAttribute("data-index"));
@@ -230,5 +226,5 @@
 	mui('.mui-popover').on('tap','li',function(e){
 	  document.getElementById("question").value = document.getElementById("question").value + this.children[0].innerHTML;
 	  mui('.mui-popover').popover('toggle')
-	}) 
+	})
 })();

@@ -1,8 +1,6 @@
 /**
  * 选择列表插件
  * varstion 2.0.0
- * by Houfeng
- * Houfeng@DCloud.io
  */
 
 (function($, window, document, undefined) {
@@ -200,15 +198,15 @@
 	Picker.prototype.startInertiaScroll = function(event) {
 		var self = this;
 		var point = event.changedTouches ? event.changedTouches[0] : event;
-		/** 
+		/**
 		 * 缓动代码
 		 */
 		var nowTime = event.timeStamp || Date.now();
-		var v = (point.pageY - self.lastMoveStart) / (nowTime - self.lastMoveTime); //最后一段时间手指划动速度  
-		var dir = v > 0 ? -1 : 1; //加速度方向  
+		var v = (point.pageY - self.lastMoveStart) / (nowTime - self.lastMoveTime); //最后一段时间手指划动速度
+		var dir = v > 0 ? -1 : 1; //加速度方向
 		var deceleration = dir * 0.0006 * -1;
-		var duration = Math.abs(v / deceleration); // 速度消减至0所需时间  
-		var dist = v * duration / 2; //最终移动多少 
+		var duration = Math.abs(v / deceleration); // 速度消减至0所需时间
+		var dist = v * duration / 2; //最终移动多少
 		var startAngle = self.list.angle;
 		var distAngle = self.calcAngle(dist) * dir;
 		//----

@@ -1,7 +1,6 @@
 /**
  * 判断应用升级模块，从url地址下载升级描述文件到本地local路径
- * yanyilin@dcloud.io
- * 
+ *
  * 升级文件为JSON格式数据，如下：
 {
 	"appid":"HelloH5",
@@ -158,7 +157,7 @@ function getUpdateData(){
  * 比较版本大小，如果新版本nv大于旧版本ov则返回true，否则返回false
  * @param {String} ov
  * @param {String} nv
- * @return {Boolean} 
+ * @return {Boolean}
  */
 function compareVersion( ov, nv ){
 	if ( !ov || !nv || ov=="" || nv=="" ){

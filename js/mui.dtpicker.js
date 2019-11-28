@@ -1,8 +1,6 @@
 /**
  * 日期时间插件
  * varstion 1.0.5
- * by Houfeng
- * Houfeng@DCloud.io
  */
 
 (function($, document) {

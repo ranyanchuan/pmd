@@ -1,8 +1,6 @@
 /**
  * 选择列表插件
  * varstion 1.0.1
- * by Houfeng
- * Houfeng@DCloud.io
  */
 
 (function($, document) {

@@ -2,8 +2,6 @@
  * 弹出选择列表插件
  * 此组件依赖 listpcker ，请在页面中先引入 mui.picker.css + mui.picker.js
  * varstion 1.0.1
- * by Houfeng
- * Houfeng@DCloud.io
  */
 
 (function($, document) {
@@ -112,7 +110,7 @@
 		getSelectedItems: function() {
 			var self = this;
 			var items = [];
-			for (var i in self.pickers) {    
+			for (var i in self.pickers) {
 				if(self.pickers.hasOwnProperty(i)) { // 修复for in会访问继承属性造成items报错情况
 					var picker = self.pickers[i];
 					items.push(picker.getSelectedItem() || {});

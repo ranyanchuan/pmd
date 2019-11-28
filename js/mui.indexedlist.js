@@ -3,8 +3,6 @@
  * 类似联系人应用中的联系人列表，可以按首字母分组
  * 右侧的字母定位工具条，可以快速定位列表位置
  * varstion 1.0.0
- * by Houfeng
- * Houfeng@DCloud.io
  **/
 
 (function($, window, document) {
