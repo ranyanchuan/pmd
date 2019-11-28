@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Hello MUI</title>
+		<title>Hello</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -520,7 +520,7 @@
 					aniShow = "slide-in-right";
 				}
 			}
-			//初始化，并预加载webview模式的选项卡			
+			//初始化，并预加载webview模式的选项卡
 			function preload() {
 
 				var menu_style = {
@@ -670,18 +670,18 @@
 					var previewImageNativeElem = document.getElementById('preview_image_native');
 					previewImageNativeElem.className = previewImageNativeElem.className.replace('mui-plus-visible', 'mui-hidden');
 				}
-				
+
 			});
 			//主列表点击事件
 			mui('#list').on('tap', 'a', function() {
 				var href = this.getAttribute('href');
-				
+
 				//非plus环境，直接走href跳转
 				if(!mui.os.plus) {
 					location.href = href;
 					return;
 				}
-				
+
 				var id = this.getAttribute("data-wid");
 				if(!id) {
 					id = href;
@@ -707,7 +707,7 @@
 					if(~id.indexOf('im-chat.html')) {
 						options.extras.acceleration = "none";
 					}
-					
+
 					var titleType = this.getAttribute("data-title-type");
 					if(titleType && titleType.indexOf("native") > -1) {//原生导航
 						options.styles.titleNView = {
@@ -718,7 +718,7 @@
 								color: '#cccccc'
 							}
 						};
-						
+
 						options.show = {
 							event:'loaded'
 						}
@@ -726,12 +726,12 @@
 						options.waiting = {
 							autoShow:false
 						}
-						
+
 						//透明渐变导航,增加类型设置
 						if(titleType == "transparent_native") {
 							options.styles.titleNView.type = "transparent";
 						}
-						
+
 						//处理原生图片轮播
 						if(~id.indexOf("slider-native.html")) {
 							options.styles.subNViews = [{ //配置图片轮播
@@ -766,13 +766,13 @@
 							background: "#f7f7f7"
 						}
 					}
-					
+
 					//侧滑菜单需动态控制一下zindex值；
 					if(~id.indexOf('offcanvas-')) {
 						options.styles.zindex = 9998;
 						options.styles.popGesture = ~id.indexOf('offcanvas-with-right') ? "close" : "none";
 					}
-					
+
 					if(id && id == "viewgroup") { //强制启用截屏
 						options.extras.acceleration = "capture";
 					}
